@@ -63,8 +63,8 @@ const StyledButton = styled.button`
       ? "#FFFFFF"
       : "none"};
 
-  ${({ props }) => {
-    switch (props.variant) {
+  ${({ variant }) => {
+    switch (variant) {
       case "sign":
         return css`
           background-color: #060874;
