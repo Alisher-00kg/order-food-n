@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const Batton = ({ children, type, onClick, variant, disabled, ...props }) => {
+const Button = ({ children, type, onClick, variant, disabled, ...props }) => {
   return (
     <>
       <div>
-        <StyledBatton
+        <StyledButton
           type={type}
           onClick={onClick}
           variant={variant}
@@ -13,18 +13,18 @@ const Batton = ({ children, type, onClick, variant, disabled, ...props }) => {
           {...props}
         >
           {children}
-        </StyledBatton>
+        </StyledButton>
       </div>
     </>
   );
 };
 
-export default Batton;
+export default Button;
 
-const StyledBatton = styled.button`
-  width: 110px;
+const StyledButton = styled.button`
+  width: 440px;
   height: 44px;
-
+  border: ${(props) => (props.variant === "close" ? "#8A2B06" : "none")};
   cursor: pointer;
   color: ${(props) =>
     props.variant === "sign"
