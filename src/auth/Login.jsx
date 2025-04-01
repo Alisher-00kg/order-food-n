@@ -1,7 +1,9 @@
+
+
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const Auth = ({ onLogin }) => {
+const Login = ({ }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
@@ -14,12 +16,12 @@ const Auth = ({ onLogin }) => {
       return;
     }
 
-    localStorage.setItem("user", JSON.stringify({ email, password }));
-    onLogin();
+   
   };
 
   return (
     <AuthContainer>
+        
       <AuthForm>
         <h2>{isRegistering ? "Регистрация" : "Вход"}</h2>
         <form onSubmit={handleSubmit}>
@@ -40,8 +42,8 @@ const Auth = ({ onLogin }) => {
           </Button>
         </form>
         <p
-          onClick={() => setIsRegistering(!isRegistering)}
-          style={{ cursor: "pointer", marginTop: "10px", color: "#0079bf" }}
+          onClick={() => setIsRegistering(true)}
+          style={{ cursor: "pointer", marginTop: "10px", color: "#8A2B06" }}
         >
           {isRegistering
             ? "Уже есть аккаунт? Войти"
@@ -52,7 +54,7 @@ const Auth = ({ onLogin }) => {
   );
 };
 
-export default Auth;
+export default Login;
 
 const AuthContainer = styled.div`
   display: flex;
@@ -79,8 +81,8 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  background: #00ffc4;
-  color: #101114;
+  background: #8A2B06;
+  color: #FFFFFF;
   padding: 10px;
   width: 100%;
   border: none;
@@ -88,8 +90,8 @@ const Button = styled.button`
   border-radius: 5px;
   transition: 0.3s;
   &:hover {
-    background: #5aaf44;
+    background: #7E2A0A;
   }
-  &::after {
-  }
+ 
 `;
+
