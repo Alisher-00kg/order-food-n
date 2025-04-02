@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import IconButton from "./IconButtons";
-import { Button } from "./Button";
 import { Icons } from "../../assets";
-import Input from "./Input";
 
 export const ModalItemCard = ({ id, title, price, amount }) => {
   return (
@@ -25,7 +23,6 @@ export const ModalItemCard = ({ id, title, price, amount }) => {
           </IconButton>
         </Quantity>
       </Item>
-      <Total></Total>
     </CartContainer>
   );
 };
@@ -67,12 +64,6 @@ const Total = styled.div`
   display: flex;
   justify-content: space-between;
   font-weight: bold;
-  margin-top: 20px;
-`;
-
-const ActionButtons = styled.div`
-  display: flex;
-  justify-content: flex-end;
   margin-top: 20px;
 `;
 
