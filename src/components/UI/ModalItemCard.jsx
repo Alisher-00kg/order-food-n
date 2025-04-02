@@ -3,20 +3,23 @@ import styled from "styled-components";
 import IconButton from "./IconButtons";
 import { Button } from "./Button";
 import { Icons } from "../../assets";
+import Input from "./Input";
 
 export const ModalItemCard = ({ id, title, price, amount }) => {
   return (
     <CartContainer>
       <Item key={id}>
-        <div>
+        <StyledNameAndPrice>
           <ItemName>{title}</ItemName>
-          <Price>${price.toFixed(2)}</Price>
-        </div>
+          <StyledPrice>
+            <Price>${price.toFixed(2)}</Price>
+            <StyledPTag>x{amount}</StyledPTag>
+          </StyledPrice>
+        </StyledNameAndPrice>
         <Quantity>
           <IconButton variant="close">
             <Icons.Minus />
           </IconButton>
-          <span>x {amount}</span>
           <IconButton variant="close">
             <Icons.Plus />
           </IconButton>
@@ -28,7 +31,7 @@ export const ModalItemCard = ({ id, title, price, amount }) => {
 };
 
 const CartContainer = styled.div`
-  width: 400px;
+  width: 671px;
   background: white;
   border-radius: 10px;
   padding: 20px;
@@ -51,11 +54,13 @@ const ItemName = styled.div`
 const Price = styled.div`
   color: #b26a1c;
   font-weight: bold;
+  font-size: 18px;
 `;
 
 const Quantity = styled.div`
   display: flex;
   align-items: center;
+  gap: 14px;
 `;
 
 const Total = styled.div`
@@ -69,4 +74,26 @@ const ActionButtons = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
+`;
+
+const StyledNameAndPrice = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const StyledPrice = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 47px;
+`;
+
+const StyledPTag = styled.p`
+  width: 46px;
+  height: 36px;
+  border: 1px solid #d6d6d6;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
