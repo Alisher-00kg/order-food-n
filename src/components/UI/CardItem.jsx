@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Input from "./Input";
+import { Icons } from "../../assets";
 import IconButton from "./IconButtons";
 
 export const CardItem = ({ id, title, description, price, amount }) => {
@@ -17,10 +19,13 @@ export const CardItem = ({ id, title, description, price, amount }) => {
             id={`amount-${id}`}
             type="number"
             min="1"
+            max="5"
             defaultValue={amount}
           />
         </StyledAmount>
-        <StyledButton>+ Add</StyledButton>
+        <IconButton variant="add">
+          <Icons.Whitepluse /> Add
+        </IconButton>
       </Actions>
     </StyledLi>
   );
@@ -34,7 +39,6 @@ const StyledLi = styled.li`
   border-bottom: 1px solid #ccc;
   background: white;
   width: 1039px;
-  font-family: sans-serif;
 `;
 
 const TextContent = styled.div`
@@ -62,30 +66,16 @@ const Price = styled.span`
 const Actions = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: end;
   gap: 0.5rem;
 `;
 
-const AmountInput = styled.input`
+const AmountInput = styled(Input)`
   width: 50px;
   padding: 0.3rem;
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 5px;
-`;
-
-const StyledButton = styled.button`
-  background: #8a2b06;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 1rem;
-
-  &:hover {
-    background: #641e03;
-  }
 `;
 
 const StyledAmount = styled.div`
