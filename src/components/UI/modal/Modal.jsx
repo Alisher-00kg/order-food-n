@@ -1,26 +1,25 @@
-import React, { useContext } from "react";
-
 import styled from "styled-components";
 import { ModalContext } from "../../../context/ModalContext";
+import { useContext } from "react";
+import { Button } from "../Button";
 
-export const Modal = () => {
-  const { isOpenModal, closeModal, content } = useContext(ModalContext);
-
-  if (!isOpenModal) return null;
+export const Modal = ({ children }) => {
+  const { closeModal } = useContext(ModalContext);
 
   return (
-    <StyledModal>
-      <StyledCloseModal onClick={closeModal}>
+    <StyledModal onClick={closeModal}>
+      <StyledCloseModal onClick={(event) => event.stopPropagation()}>
+        {children}
         <StyledMiniCard>
           <StdTotAm>Total Amount</StdTotAm>
           <span className="price">$200.99</span>
         </StyledMiniCard>
         <StyledContent>
-          <StyledButtonClose onClick={closeModal}>Close</StyledButtonClose>
-          <StyledButtonOrder>Order</StyledButtonOrder>
+          <Button onClick={closeModal} variant={"close"}>
+            Close
+          </Button>
+          <Button variant={"add"}>Order</Button>
         </StyledContent>
-        {content}
-        Salam
       </StyledCloseModal>
     </StyledModal>
   );
@@ -60,20 +59,6 @@ const StyledContent = styled.div`
   justify-content: end;
   gap: 20px;
 `;
-const StyledButtonClose = styled.button`
-  width: 110px;
-  height: 44px;
-  border-radius: 20px;
-  border: 1px;
-`;
-const StyledButtonOrder = styled.button`
-  width: 110px;
-  height: 44px;
-  background-color: #8a2b06;
-  border-radius: 20px;
-  border: 1px;
-`;
-
 const StdTotAm = styled.span`
   font-weight: 700;
   font-size: 20px;
