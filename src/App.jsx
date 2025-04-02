@@ -1,6 +1,11 @@
 import React from "react";
+import Card from "./components/UI/Card";
 const App = () => {
-  return <div>App</div>;
+  return (
+    <div>
+      <Card />
+    </div>
+  );
 };
 
 export default App;
