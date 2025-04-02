@@ -20,6 +20,7 @@ export const Modal = () => {
           <StyledButtonOrder>Order</StyledButtonOrder>
         </StyledContent>
         {content}
+        Salam
       </StyledCloseModal>
     </StyledModal>
   );
