@@ -1,36 +1,65 @@
-import React from "react";
-import "./Footer.css";
+import React, { useState } from "react";
+import styled from "styled-components";
+
+const FooterContainer = styled.footer`
+  background-color: #8a2b06;
+  color: #fff;
+  padding: 40px;
+`;
+
+const DropdownButton = styled.button`
+  background-color: #682004;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+`;
+
+const DropdownContent = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  border: 1px solid #ffffff;
+  display: ${(props) => (props.isOpen ? "block" : "none")};
+`;
+
+const DropdownItem = styled.li`
+  padding: 8px 12px;
+  &:hover {
+    background-color: #555;
+  }
+`;
 
 function Footer() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [menuItems] = useState([
+    "Люди которые принимали участие при создании сайта либо помогали:",
+    "Алишер",
+    "Данияр",
+    "Кубания",
+    "Нуриза",
+    "Сымбат",
+    "Нурболя",
+  ]);
+
+  
+
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <footer className="footer">
-      <div className="footer-content">
-        <p>&copy; {new Date().getFullYear()} Наш сайт. Все права защищены.</p>
-        <ul className="footer-links">
-          <li>
-            <a href="/about">О нас</a>
-          </li>
-          <li>
-            <a href="/contact">Контакты: +7122345678</a>
-          </li>
-          <li>
-            <a href="/privacy">Политика конфиденциальности</a>
-          </li>
-        </ul>
-        <div className="social-icons">
-          {" "}
-          <a href="https://facebook.com">
-            <i className="fab fa-facebook"></i>
-          </a>
-          <a href="https://twitter.com">
-            <i className="fab fa-twitter"></i>
-          </a>
-          <a href="https://instagram.com">
-            <i className="fab fa-instagram"></i>
-          </a>
-        </div>
-      </div>
-    </footer>
+    <FooterContainer>
+      <DropdownButton onClick={toggleDropdown}>
+        О Комапании
+      </DropdownButton>
+      <DropdownContent isOpen={isOpen}>
+        {menuItems.map((item, index) => (
+          <DropdownItem key={index}>{item}</DropdownItem>
+        ))}
+      </DropdownContent>
+    </FooterContainer>
   );
 }
 
