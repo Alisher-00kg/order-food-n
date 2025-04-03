@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import HeaderButton from "./UI/HeaderButton";
 
-export default function Header() {
+export default function HeaderSecond() {
   return (
     <HeaderContainer>
       <Title>ReactMeals</Title>

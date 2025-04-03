@@ -12,6 +12,7 @@ function Footer() {
     "Нуриза",
     "Сымбат",
     "Нурболя",
+    "Арген",
   ]);
 
   const toggleDropdown = () => {
