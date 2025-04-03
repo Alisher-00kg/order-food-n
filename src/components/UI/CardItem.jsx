@@ -36,6 +36,7 @@ const StyledLi = styled.li`
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  border-radius: 16px;
   border-bottom: 1px solid #ccc;
   background: white;
   width: 1039px;
