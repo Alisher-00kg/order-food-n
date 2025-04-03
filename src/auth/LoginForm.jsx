@@ -3,6 +3,7 @@ import { useAuth } from "../context/LoginContext";
 
 import Input from "../components/UI/Input";
 import styled from "styled-components";
+import { Button } from "../components/UI/Button";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -22,7 +23,7 @@ const LoginForm = () => {
     <>
       <AuthContainer>
         <AuthForm onSubmit={handleSubmit}>
-          <div>
+          <StyledBox>
             <label htmlFor="username">Email:</label>
             <Input
               type="text"
@@ -32,8 +33,8 @@ const LoginForm = () => {
               required
               placeholder="Введите email"
             />
-          </div>
-          <div>
+          </StyledBox>
+          <StyledBox>
             <label htmlFor="password">Пароль:</label>
             <Input
               type="password"
@@ -43,8 +44,10 @@ const LoginForm = () => {
               required
               placeholder="Введите пароль"
             />
-          </div>
-          <Button type="submit">Войти</Button>
+          </StyledBox>
+          <StyledButton type="submit" variant={"add"}>
+            Войти
+          </StyledButton>
         </AuthForm>
       </AuthContainer>
     </>
@@ -60,8 +63,15 @@ const AuthContainer = styled.form`
   justify-content: center;
   height: 100vh;
 `;
-
+const StyledBox = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 20px;
+`;
 const AuthForm = styled.div`
+  width: 400px;
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -69,21 +79,18 @@ const AuthForm = styled.div`
   text-align: center;
 `;
 
-const Button = styled.button`
-  background: #8A2B06;
-  color: #FFFFFF;
+const StyledButton = styled(Button)`
   padding: 10px;
   margin: 10px 0;
   width: 100%;
   border: none;
-  cursor: pointer;
   box-shadow: 0px 4px 5px 0px #98d5f1;
   border-radius: 5px;
   transition: 0.3s;
   &:hover {
-    background: #7E2A0A;
+    background: #7e2a0a;
   }
- &:active{
+  &:active {
     background: #993108;
- }
+  }
 `;
