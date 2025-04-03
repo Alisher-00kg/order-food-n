@@ -1,28 +1,29 @@
 import React, { useState } from "react";
-import { useAuth } from "../context/LoginContext";
-
 import Input from "../components/UI/Input";
 import styled from "styled-components";
 import { Button } from "../components/UI/Button";
 
-const LoginForm = () => {
+const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth();
+  const [isRegistering, setIsRegistering] = useState(false);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      await login({ username, password });
-    } catch (error) {
-      console.error("Ошибка при входе:", error);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username.trim() === "" || password.trim() === "") {
+      alert("Введите email и пароль!");
+      return;
     }
+
+    localStorage.setItem("user", JSON.stringify({ username, password }));
+    onLogin();
   };
 
   return (
     <>
       <AuthContainer>
         <AuthForm onSubmit={handleSubmit}>
+          <h2>{isRegistering ? "Регистрация" : "Вход"}</h2>
           <StyledBox>
             <label htmlFor="username">Email:</label>
             <Input
@@ -30,7 +31,6 @@ const LoginForm = () => {
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              required
               placeholder="Введите email"
             />
           </StyledBox>
@@ -46,8 +46,16 @@ const LoginForm = () => {
             />
           </StyledBox>
           <StyledButton type="submit" variant={"add"}>
-            Войти
+            {isRegistering ? "Зарегистрироваться" : "Войти"}
           </StyledButton>
+          <p
+            onClick={() => setIsRegistering(!isRegistering)}
+            style={{ cursor: "pointer", marginTop: "10px", color: "#0079bf" }}
+          >
+            {isRegistering
+              ? "Уже есть аккаунт? Войти"
+              : "Нет аккаунта? Зарегистрироваться"}
+          </p>
         </AuthForm>
       </AuthContainer>
     </>
