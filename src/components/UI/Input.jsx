@@ -22,4 +22,6 @@ const StyledInput = styled.input`
   padding: 10px;
   outline: none;
   box-shadow: 0px 0px 5px 0px #98d5f1;
+  padding: 10px;
+  margin: 10px 0;
 `;
