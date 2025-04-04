@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Input from "./Input";
 import { Icons } from "../../assets";
 import IconButton from "./IconButtons";
+import { MyContext } from "../../context/CardContext";
 
 export const CardItem = ({ id, title, description, price, amount }) => {
+  const { dispatch } = useContext(MyContext);
+
   return (
     <StyledLi key={id}>
       <TextContent>
@@ -23,7 +26,10 @@ export const CardItem = ({ id, title, description, price, amount }) => {
             defaultValue={amount}
           />
         </StyledAmount>
-        <IconButton variant="add">
+        <IconButton
+          onClick={() => dispatch({ type: "ADD", payload: id })}
+          variant="add"
+        >
           <Icons.Whitepluse /> Add
         </IconButton>
       </Actions>

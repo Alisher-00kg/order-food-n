@@ -7,7 +7,7 @@ export default function HeaderButton() {
     <StyledButton>
       <Icons.Basket />
       <span>Your Cart</span>
-      <CartCount>7</CartCount>
+      <CartCount>{array} </CartCount>
     </StyledButton>
   );
 }
