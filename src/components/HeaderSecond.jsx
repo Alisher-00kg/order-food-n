@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import HeaderButton from "./UI/HeaderButton";
 
-export default function Header() {
+export function HeaderSecond() {
   return (
     <HeaderContainer>
       <Title>ReactMeals</Title>
@@ -17,7 +17,10 @@ const HeaderContainer = styled.header`
   align-items: center;
   padding: 0 40px;
   height: 86px;
+  width: 100%;
   color: white;
+  position: fixed;
+  z-index: 1;
 `;
 
 const Title = styled.h1`
