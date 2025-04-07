@@ -4,13 +4,14 @@ import App from "./App.jsx";
 import "./index.css";
 import { ModalProvider } from "./context/ModalContext.jsx";
 import { AuthProvider } from "./context/LoginContext.jsx";
+import { CardProvider } from "./context/CardContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <ModalProvider>
+  <ModalProvider>
+    <CardProvider>
       <AuthProvider>
         <App />
       </AuthProvider>
-    </ModalProvider>
-  </React.StrictMode>
+    </CardProvider>
+  </ModalProvider>
 );

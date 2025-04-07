@@ -1,17 +1,17 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
+import { foods } from "../utils/constants/foods";
 
 export const ModalContext = createContext({});
 
 export const ModalProvider = ({ children }) => {
+  // const [order, setOrder] = useState([...foods]);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  const openModal = () => {
-    setIsOpenModal(!isOpenModal);
-  };
+  // const orderClick = () => setOrder([]);
 
-  const closeModal = () => {
-    setIsOpenModal(!isOpenModal);
-  };
+  const openModal = () => setIsOpenModal(true);
+
+  const closeModal = () => setIsOpenModal(false);
 
   return (
     <ModalContext.Provider value={{ isOpenModal, openModal, closeModal }}>
@@ -19,3 +19,5 @@ export const ModalProvider = ({ children }) => {
     </ModalContext.Provider>
   );
 };
+
+export const useModal = () => useContext(ModalContext);

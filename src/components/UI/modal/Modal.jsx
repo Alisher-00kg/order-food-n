@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import { ModalContext } from "../../../context/ModalContext";
-import { useContext } from "react";
+import { useModal } from "../../../context/ModalContext";
 import { Button } from "../Button";
 
-export const Modal = ({ children }) => {
-  const { closeModal } = useContext(ModalContext);
+export const Modal = ({ children, handleOrder }) => {
+  const { isOpenModal, closeModal } = useModal();
+
+  if (!isOpenModal) return null;
 
   return (
     <StyledModal onClick={closeModal}>
@@ -14,11 +15,14 @@ export const Modal = ({ children }) => {
           <StdTotAm>Total Amount</StdTotAm>
           <span className="price">$200.99</span>
         </StyledMiniCard>
+
         <StyledContent>
           <Button onClick={closeModal} variant={"close"}>
             Close
           </Button>
-          <Button variant={"add"}>Order</Button>
+          <Button variant={"add"} onClick={handleOrder}>
+            Order
+          </Button>
         </StyledContent>
       </StyledCloseModal>
     </StyledModal>
@@ -28,23 +32,28 @@ export const Modal = ({ children }) => {
 const StyledModal = styled.div`
   background-color: #383838;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  z-index: 2;
 `;
 
 const StyledCloseModal = styled.div`
-  width: 671px;
-  height: 437px;
+  width: 711px;
+  max-height: 80vh;
   background-color: #ffffff;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: end;
+  justify-content: start;
   gap: 20px;
   padding: 0px 20px 0px 20px;
+  overflow-y: auto;
+
   span.price {
     color: #ad5502;
     font-size: 18px;
@@ -66,7 +75,7 @@ const StdTotAm = styled.span`
 const StyledMiniCard = styled.div`
   display: flex;
   gap: 25px;
-  width: 550px;
+  width: 540px;
   align-items: center;
   justify-content: space-between;
 `;

@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { Icons } from "../../assets";
+import { useModal } from "../../context/ModalContext";
 
 export default function HeaderButton() {
+  const { openModal } = useModal();
   return (
-    <StyledButton>
+    <StyledButton onClick={openModal}>
       <Icons.Basket />
       <span>Your Cart</span>
       <CartCount>7</CartCount>
