@@ -3,7 +3,14 @@ import styled from "styled-components";
 import IconButton from "./IconButtons";
 import { Icons } from "../../assets";
 
-export const ModalItemCard = ({ id, title, price, amount }) => {
+const ModalItemCard = ({
+  id,
+  title,
+  price,
+  amount,
+  onIncrement,
+  onDecrement,
+}) => {
   return (
     <CartContainer>
       <Item key={id}>
@@ -15,10 +22,10 @@ export const ModalItemCard = ({ id, title, price, amount }) => {
           </StyledPrice>
         </StyledNameAndPrice>
         <Quantity>
-          <IconButton variant="close">
+          <IconButton variant="close" onClick={onDecrement}>
             <Icons.Minus />
           </IconButton>
-          <IconButton variant="close">
+          <IconButton variant="close" onClick={onIncrement}>
             <Icons.Plus />
           </IconButton>
         </Quantity>
@@ -26,6 +33,7 @@ export const ModalItemCard = ({ id, title, price, amount }) => {
     </CartContainer>
   );
 };
+export default ModalItemCard;
 
 const CartContainer = styled.div`
   width: 671px;
@@ -60,12 +68,12 @@ const Quantity = styled.div`
   gap: 14px;
 `;
 
-const Total = styled.div`
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  margin-top: 20px;
-`;
+// const Total = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   font-weight: bold;
+//   margin-top: 20px;
+// `;
 
 const StyledNameAndPrice = styled.div`
   display: flex;

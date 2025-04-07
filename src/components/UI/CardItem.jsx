@@ -4,7 +4,19 @@ import Input from "./Input";
 import { Icons } from "../../assets";
 import IconButton from "./IconButtons";
 
-export const CardItem = ({ id, title, description, price, amount }) => {
+export const CardItem = ({
+  id,
+  title,
+  description,
+  price,
+  amount,
+  onAddItem,
+}) => {
+  const handleAddClick = () => {
+    const item = { id, title, description, price, amount };
+    onAddItem(item);
+  };
+
   return (
     <StyledLi key={id}>
       <TextContent>
@@ -23,7 +35,7 @@ export const CardItem = ({ id, title, description, price, amount }) => {
             defaultValue={amount}
           />
         </StyledAmount>
-        <IconButton variant="add">
+        <IconButton variant="add" onClick={handleAddClick}>
           <Icons.Whitepluse /> Add
         </IconButton>
       </Actions>
